@@ -68,14 +68,7 @@ export default function shouldNotProxy(url, host, userAllowlist) {
 
   const lanIps = /(^(127|10)\.\d{1,3}\.\d{1,3}\.\d{1,3}$)|(^192\.168\.\d{1,3}\.\d{1,3}$)|(^172\.1[6-9]\.\d{1,3}\.\d{1,3}$)|(^172\.2[0-9]\.\d{1,3}\.\d{1,3}$)|(^172\.3[0-1]\.\d{1,3}\.\d{1,3}$)/
 
-  const allowlist = [
-    '*://api.windscribe.com/*',
-    '*://assets.windscribe.com/*',
-    '*://*.staticnetcontent.com/*',
-    '*://api.totallyacdn.com/*',
-    '*://assets.totallyacdn.com/*',
-    'https://windscribe.com/installed/*',
-  ].concat(userAllowlist)
+  const allowlist = [''].concat(userAllowlist)
 
   if (workingApi !== '.windscribe.com') {
     allowlist.push(`*://api${workingApi}/*`, `*://assets${workingApi}/*`)
@@ -87,6 +80,6 @@ export default function shouldNotProxy(url, host, userAllowlist) {
     // TODO: how to test local protocols?
     ['http', 'ftp', 'ws'].every(protocol => !url.startsWith(protocol)),
     lanIps.test(host),
-    allowlist.some(pattern => shExpMatch(url, pattern)),
+    !allowlist.some(pattern => shExpMatch(url, pattern)),
   ].some(_ => _)
 }

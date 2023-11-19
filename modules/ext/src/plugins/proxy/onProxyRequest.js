@@ -27,7 +27,7 @@ export default actions => ({
         proxy.status === 'disconnected' ||
         proxy.status === 'disconnecting' ||
         shouldNotProxy(
-          d.url,
+          d.originUrl,
           new URL(d.url).hostname,
           flatten(firefoxAllowlistTransform(allowlist)),
         )
