@@ -1,36 +1,5 @@
-# Windscribe Browser Extension
-Source code of the Windscribe Chrome and Firefox browser extensions. This extension aims to improve user privacy by implementing the following features:
+# Windscribe Browser Extension with Blacklist function
 
-- Proxy data via the Windscribe network
-- Block Ads, Trackers and Malware (powered by [uBlock Origin](https://github.com/gorhill/uBlock))
-- Block Social network widgets and buttons
-- Block website notification spam
-- Remove 1st/3rd Party Cookies on tab close
-- Rotate User-Agent
-- Spoof Browser Location API
-- Spoof Timezone
-- Spoof Locale
-- Disable WebRTC
-- Disable Javascript Service Workers
+The official Windscribe Browser Extension only comes with a whitelist/allowlist function that allows any website to bypass the proxy connection once whitelisted. However, quite a few people have been asking for a blacklist function on Discord, Reddit, and someone even opened up an [issue](https://github.com/Windscribe/browser-extension/issues/10) within the official repository.
 
-# Build Instructions
-
-```
-yarn cache clean && yarn install
-cd modules/ext && cp .env.schema .env && cd ../..
-yarn workspace ws-api-client build
-yarn workspace ext build
-```
-
-Further documentations can be found [here](https://github.com/Windscribe/browser-extension/blob/main/modules/ext/docs/index.md):
-
-# Attributions
-
-All client side blocking functionality is courtesy of Raymond Hill's [uBlock Origin project](https://github.com/gorhill/uBlock)
-
-The blocklists used by the various blocking features are sourced from:
-
-- https://github.com/uBlockOrigin/uAssets
-- https://easylist.to
-- https://gitlab.com/curben/urlhaus-filter
-- https://www.i-dont-care-about-cookies.eu/
+This fork contains only the files that change 'whitelist' to 'blacklist'.
